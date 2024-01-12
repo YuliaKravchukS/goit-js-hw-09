@@ -91,7 +91,15 @@ const markup = images
 
 list.insertAdjacentHTML('beforeend',markup);
 
-// let gallery = new SimpleLightbox('.gallery a');
-// gallery.on('show.simplelightbox', function () {
-// 	// do something…
-// });
+let gallery = new SimpleLightbox('.gallery a');
+gallery.on('show.simplelightbox', function () {
+  gallery.options.captionSelector = 'img';
+  gallery.options.captions = true;
+  gallery.options.captionsData = 'alt';
+  gallery.options.captionPosition = 'bottom';
+  gallery.options.captionDelay = 250;
+
+}
+);
+
+
