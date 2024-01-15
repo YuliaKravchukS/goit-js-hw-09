@@ -5,27 +5,24 @@ const localStorageKey = "feedback-form-state";
 
 
 const savedData = JSON.parse(localStorage.getItem(localStorageKey)) || {};
-textarea.value = savedData.textarea || "";
-input.value = savedData.input || "";
+textarea.value = savedData.message || "";
+input.value = savedData.email || "";
 
 form.addEventListener("input", (evt) => {
   const value = {
-    input: input.value,
-    textarea: textarea.value,
+    email: input.value.trim(),
+    message: textarea.value.trim(),
   };
 
 localStorage.setItem(localStorageKey, JSON.stringify(value));
 
-const savedSettings = localStorage.getItem(localStorageKey);
-
-const parsedSettings = JSON.parse(savedSettings);
 });
 
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  console.log("Email:", evt.target.elements.email.value);
-  console.log("Message:", evt.target.elements.message.value);
-
+  if (textarea.value.trim() !== '' && input.value.trim() !=='') {
+    console.log({ Email: evt.target.elements.email.value.trim(), Message: evt.target.elements.message.value.trim() })
+  };
   localStorage.removeItem(localStorageKey);
   form.reset();
 });

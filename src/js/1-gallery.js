@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -91,15 +91,15 @@ const markup = images
 
 list.insertAdjacentHTML('beforeend',markup);
 
-let gallery = new SimpleLightbox('.gallery a');
-gallery.on('show.simplelightbox', function () {
-  gallery.options.captionSelector = 'img';
-  gallery.options.captions = true;
-  gallery.options.captionsData = 'alt';
-  gallery.options.captionPosition = 'bottom';
-  gallery.options.captionDelay = 250;
+let gallery = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionSelector: 'img',
+  // captionType: 'attr',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
+  gallery.on('show.simplelightbox', function (){});
 
-}
-);
 
 
